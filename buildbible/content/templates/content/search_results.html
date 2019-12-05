@@ -1,0 +1,71 @@
+{% extends "content/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/search_results.css' %}" defer>
+{% endblock extra_css %}
+
+{% load crispy_forms_tags %}
+{% block page_contents %}
+<div class="content">
+    {% if object_list|length == 0 %}
+    <div class="nothing-found">
+        <img src="{% static 'content/illustrations/undraw_void_3ggu.svg'%}" alt="no results image" height="250"
+            width="500">
+        <h1>Hmm, we didn't find anything for that...</h1>
+        <h3 class="text-primary">Please revise your search and try again.</h3>
+        <a class="pure-button button-link" href="/" aria-label="Home" title="Home">
+            Back to home
+        </a>
+    </div>
+    {% else %}
+    <div class="header">
+        <h1>Search Results</h1>
+        <h2 class="text-primary">Here's what we found...</h2>
+    </div>
+    <div class="posts results-pad">
+        {% for post in object_list %}
+        <section class="post">
+        {% if post.author %}
+            <header class="post-header">
+                <img class="pure-img post-img" src="{{ post.author.profile.image.url }}"
+                    alt="{{post.author.username}} avatar">
+                <h2 class="post-title">
+                    <a href="{% url 'post-detail' post.id %}" aria-label="{{post.title}}" title="{{post.title}}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="post-meta">
+                    By <span class="text-primary">{{ post.author.username }}</span>
+                    on
+                    <small>{{ post.date_posted|date:'F d, Y' }}</small>
+                </p>
+            </header>
+        {% else %}
+        <header class="post-header">
+                <img class="pure-img post-img" src="{% static 'images/bb-logo-small.svg' %}"
+                    alt="bb-avatar" width=40 height=40>
+                <h2 class="post-title line-clamp-2">
+                    <a href="{% url 'post-detail' post.id %}" aria-label="{{post.title}}" title="{{post.title}}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="post-meta">
+                    By <span class="text-primary">Build Bible</span>
+                    on
+                    <small>{{ post.date_posted|date:'F d, Y' }}</small>
+                </p>
+            </header>
+        {% endif %}
+            <div class="post-description">
+                <p line-clamp-2>
+                    {{ post.description }}
+                </p>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock page_contents %}

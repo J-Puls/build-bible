@@ -1,0 +1,12 @@
+{% extends 'content/base.html' %}
+{% block alt_title %} | Logout{% endblock alt_title %}
+{% block page_contents %}
+<div class="content text-center h-50 w-50 form-pad m-center">
+    <h1>You have been logged out successfully.</h1>
+    <h2 class="text-primary">Have a great day!</h2>
+    <br>
+    <h3>Didn't mean to sign out?
+        <a href="{% url 'login'%}" aria-label="Sign In" title="Sign In">Sign back in!</a>
+    </h3>
+</div>
+{% endblock page_contents %}

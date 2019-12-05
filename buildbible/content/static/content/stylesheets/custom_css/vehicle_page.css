@@ -1,0 +1,45 @@
+.vehicle-header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+
+.vehicle-header .vehicle-header-title {
+  max-width: 70%;
+  text-align: left;
+}
+
+.vehicle-header .vehicle-header-title h1 {
+  font-size: 1.5em;
+}
+
+.vehicle-header .vehicle-header-title h3 {
+  font-size: 1em;
+}
+
+.vehicle-header .vehicle-image {
+  width: 20%;
+  padding: 20px;
+}
+
+@media (min-width: 51em) {
+  .vehicle-header {
+    width: 70%;
+  }
+  .vehicle-header .vehicle-header-title h1 {
+    font-size: 3em;
+  }
+  .vehicle-header .vehicle-header-title h3 {
+    font-size: 1.5em;
+  }
+}
+/*# sourceMappingURL=vehicle_page.css.map */

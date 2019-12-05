@@ -1,0 +1,40 @@
+{% extends 'content/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/profile_page.css' %}" defer>
+    
+{% endblock extra_css %}
+
+{% block alt_title %} | {{ user.username }}{% endblock alt_title %}
+{% load crispy_forms_tags %}
+{% block page_contents %}
+
+<div class="header">
+    <h1>Hello, {{ user.username }}!</h1>
+    <h2 class="text-primary">{{user.email}}</h2>
+</div>
+<div class="content">
+    <div class="pure-g profile-card">
+        <div class="image m-center pure-u-1-2">
+            <img src="{{ user.profile.image.url }}" alt="" class="pure-img profile-img">
+        </div>
+        <div class="pure-u-3-4 pure-u-md-*">
+            <form method="POST" class="pure-form" enctype="multipart/form-data">
+                <legend class="text-primary">Update Profile Info</legend>
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                    <div class="w-100 flex-center">
+                        <button class="pure-button button-primary w-50" type="submit" aria-label="Submit Changes"
+                            title="Submit Changes">
+                            Update
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock page_contents %}

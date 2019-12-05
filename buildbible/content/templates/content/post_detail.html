@@ -1,0 +1,40 @@
+{% extends "content/base.html" %}
+{% block alt_title %} | {{object.title}}{% endblock alt_title %}
+{% block page_contents %}
+<div class="header">
+    <h1>{{ object.title }}</h1>
+    {% if object.subtitle != None %}
+    <h2 class="post-subtitle text-primary">{{ object.subtitle }}</h2>
+    {% endif %}
+    <nav class="breadcrumbs">
+        <p>
+            <span>
+                <a href="{% url 'content-home' %}" class="bread-link" aria-label="Home" title="Home">Home</a>
+            </span>
+            /
+            <span>
+            {% if object.context %}
+                <a href="/vehicle/?vehicle={{ object.context.id }}" aria-label="{{ object.context.manufacturer }} {{ object.context.model_name }}" title="{{ object.context.manufacturer }} {{ object.context.model_name }}">
+                    {{ object.context.manufacturer }} {{ object.context.model_name }}
+                </a>
+                {% else %}
+                    <a href="{% url 'content-general'%}" aria-label="General Knowledge" title="General Knowledge">
+                        General Knowledge
+                    </a>
+                {% endif %}
+            </span>
+            /
+            <span class="text-dark">{{ object.title }}</span>
+        </p>
+    </nav>
+</div>
+<div class="content">
+    {{ object.content|safe }}
+</div>
+<script>
+    $(document).ready(function () {
+        $('table').addClass('pure-table').addClass('pure-table-bordered');
+        $('h1', '.content').addClass('content-subhead');
+    })
+</script>
+{% endblock page_contents %}

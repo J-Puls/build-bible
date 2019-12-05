@@ -1,0 +1,156 @@
+.hero {
+  text-align: center;
+  padding: 10px;
+}
+
+.hero .hero-titles {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hero .hero-titles .logo-block {
+  width: 90%;
+  padding: 20px 20px 0 20px;
+  margin: 20px auto 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero .hero-titles .logo-block .logo {
+  width: 100%;
+  margin: auto 0;
+  padding: 20px;
+}
+
+.hero .hero-titles .hero-tagline {
+  font-size: 2em;
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  padding: 0 .5em 1em .5em;
+  margin-top: 0;
+}
+
+@media (min-width: 51em) {
+  .hero .hero-titles .logo-block {
+    padding: 0 .5em;
+  }
+  .hero .hero-titles .hero-tagline {
+    margin-top: .83em;
+    font-size: 2.3em;
+    font-weight: 300;
+    padding: 1em 0;
+  }
+}
+
+.find-box {
+  padding: 2px 3em;
+  background: rgba(250, 250, 250, 0.05);
+  text-align: center;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.43) 4px 5px 10px;
+          box-shadow: rgba(0, 0, 0, 0.43) 4px 5px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.find-box .dropdown-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.find-box .dropdown-container .pure-form {
+  width: 100%;
+}
+
+.find-box .dropdown-container .pure-form select {
+  height: 3em;
+  font-weight: 700;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.find-box .dropdown-container .pure-form select:focus {
+  border-color: #50436f;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #6b50ac;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #6b50ac;
+}
+
+.find-box .dropdown-container .pure-form .pure-button {
+  width: 100%;
+  height: 3em;
+  margin: 10px auto;
+}
+
+.find-box .divider {
+  width: 30%;
+  margin: 0 auto;
+  color: #cacaca;
+}
+
+.find-box .divider h3 {
+  margin: 0;
+}
+
+.find-box .search-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.find-box .search-container .pure-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.find-box .search-container .pure-form .form-group {
+  width: 75%;
+  margin: 0;
+}
+
+.find-box .search-container .pure-form .form-group input {
+  height: 3em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.find-box .search-container .pure-form button {
+  width: 25%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin: 0;
+  height: 3em;
+}
+
+@media (min-width: 51em) {
+  .find-box .dropdown-container .pure-form {
+    width: 30%;
+    margin: 0 auto;
+  }
+  .find-box .dropdown-container .pure-form .search-dropdown {
+    width: 100%;
+    font-size: 1.1em;
+  }
+  .find-box .search-container .pure-form {
+    width: 30%;
+    margin: 0 auto;
+  }
+}
+/*# sourceMappingURL=home_page.css.map */

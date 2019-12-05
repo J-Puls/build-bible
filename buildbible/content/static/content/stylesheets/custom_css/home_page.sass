@@ -1,0 +1,103 @@
+.hero
+    text-align: center
+    padding: 10px
+    .hero-titles
+        max-width: 800px
+        margin: 0 auto
+        padding: 0
+        .logo-block
+            width: 90%
+            padding: 20px 20px 0 20px
+            margin: 20px auto 0 auto
+            display: flex
+            justify-content: center
+            .logo
+                width: 100%
+                margin: auto 0
+                padding: 20px
+        .hero-tagline
+            font-size: 2em
+            font-weight: 100
+            font-family: 'Lato', sans-serif
+            padding: 0 .5em 1em .5em
+            margin-top: 0
+    @media (min-width: 51em)
+        .hero-titles
+            .logo-block
+                padding: 0 .5em
+
+            .hero-tagline
+                margin-top: .83em
+                font-size: 2.3em
+                font-weight: 300
+                padding: 1em 0
+
+.find-box
+    padding: 2px 3em
+    background: rgba(250, 250, 250, 0.05)
+    text-align: center
+    box-shadow: rgba(0, 0, 0, 0.43) 4px 5px 10px
+    display: flex
+    flex-direction: column
+    .dropdown-container
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-content: space-between
+        .pure-form
+            width: 100%
+            select
+                height: 3em
+                font-weight: 700
+                font-size: 1.2em
+                cursor: pointer
+                &:focus
+                    border-color: rgba(80,67,111,1.0)
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(107,80,172,1.0)
+            .pure-button
+                width: 100%
+                height: 3em
+                margin: 10px auto
+
+    .divider
+        width: 30%
+        margin: 0 auto
+        color: rgba(202,202,202,1.0)
+        h3
+            margin: 0
+
+    .search-container
+        width: 100%
+        margin: 0 auto
+        padding: 10px 0
+        .pure-form
+            display: flex
+            .form-group
+                width: 75%
+                margin: 0
+                input
+                    height: 3em
+                    border-top-right-radius: 0
+                    border-bottom-right-radius: 0
+
+            button
+                width: 25%
+                border-top-left-radius: 0
+                border-bottom-left-radius: 0
+                margin: 0
+                height: 3em
+
+@media (min-width: 51em)
+    .find-box
+        .dropdown-container
+            .pure-form
+                width: 30%
+                margin: 0 auto
+                .search-dropdown
+                    width: 100%
+                    font-size: 1.1em
+
+        .search-container
+            .pure-form
+                width: 30%
+                margin: 0 auto

@@ -1,0 +1,110 @@
+{% extends "content/base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/home_page.css' %}" async>
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/posts.css' %}" defer>
+{% endblock extra_css %}
+
+{% block meta %}
+    <meta name="Description" content="A curated collection of information for most popular project car platforms.">
+{% endblock meta%}
+
+{% block home_selected %}pure-menu-selected{% endblock home_selected %}
+
+{% load crispy_forms_tags %}
+{% block page_contents %}
+<div class="hero">
+    <div class="hero-titles">
+        <div class="logo-block">
+            <img class="full-logo" src="{% static 'images/bb-logo-full.svg' %}" alt="logo" width=100%% height=165>
+        </div>
+        <h2 class="hero-tagline">
+            A curated collection of information for most
+            <br>
+            popular project car platforms.
+        </h2>
+    </div>
+</div>
+<div class="find-box">
+    <div class="dropdown-container">
+        <h2 class="text-primary">Find your project.</h2>
+        <form class="pure-form" action="{% url 'vehicle' %}">
+            {% csrf_token %}
+            <fieldset>
+                {{ f_form|crispy }}
+                <button type="submit" class="pure-button button-primary" aria-label="Find It" title="Find It">Find It!</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="divider">
+        <h3>- or -</h3>
+    </div>
+    <div class="search-container">
+        <h2 class="text-primary">Find something specific.</h2>
+        <form class="pure-form" action="{% url 'search-results' %}">
+                    {{ s_form|crispy }}
+                <button class="button-primary pure-button" type="submit" aria-label="Search" title="Search">
+                    <ion-icon name="search" size="large"></ion-icon>
+                </button>
+        </form>
+    </div>
+    <h3>Looking for something that's not vehicle specific?
+        <br>
+        <br>
+        <a class="pure-button button-link" href="{% url 'content-general'%}" aria-label="General Knowlege" title="General Knowlege">
+        <ion-icon name="paper"></ion-icon> General Knowlege
+        </a>
+    </h3>
+</div>
+<div class="content">
+    <h2 class="content-subhead text-primary">Check out what's been added recently!</h2>
+    <div class="posts">
+        <h1 class="content-subhead">Recent Content</h1>
+        {% for post in posts %}
+        <section class="post">
+            <header class="post-header">
+            {% if post.author %}
+                <img class="pure-img post-img" src="{{ post.author.profile.image.url }}"
+                    alt="{{post.author.username}} avatar">
+                <h2 class="post-title">
+                    <a href="{% url 'post-detail' post.id %}" aria-label="{{post.title}}" title="{{post.title}}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="post-meta">
+                    By <span class="text-primary">{{ post.author.username }}</span> on <small>{{ post.date_posted|date:'F d, Y' }}</small>
+                </p>
+            {% else %}
+            <img class="pure-img post-img" src="{% static 'images/bb-logo-small.svg' %}" 
+                    alt="bb-avatar" width=40 height=40>
+                <h2 class="post-title">
+                    <a href="{% url 'post-detail' post.id %}" aria-label="{{post.title}}" title="{{post.title}}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="post-meta">
+                    By <span class="text-primary">Build Bible</span> on <small>{{ post.date_posted|date:'F d, Y' }}</small>
+                </p>
+                {% endif %}
+            </header>
+
+            <div class="post-description">
+                <p>
+                    {{ post.description }}
+                </p>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static 'content/js/dropdown_update.min.js' %}" defer></script>
+<script>
+    {% comment %} $(document).ready(function () {
+        if (navigator.appName == 'Netscape' || navigator.appName == 'Safari') {
+            $('.logo').css('height', '100%');
+        }
+        $('#div_id_query').append()
+    }) {% endcomment %}
+</script>
+{% endblock page_contents %}

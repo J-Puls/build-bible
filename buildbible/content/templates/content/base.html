@@ -1,0 +1,114 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}{% endblock meta%}
+    <title>Build Bible {% block alt_title %}{% endblock alt_title %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'content/stylesheets/bootstrap/css/bootstrap.min.css'%}" defer>
+    <link rel="stylesheet" href="{% static 'content/stylesheets/pure-release-1.0.1/pure.min.css' %}" async>
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/main.css' %}" defer>
+
+    {% block extra_css %}{% endblock extra_css %}
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #121212; color: white;">
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link" aria-label="menu button">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+        <div id="menu">
+            <div class="pure-menu">
+                <div class="menu-header">
+                    <img class="logo" src="{% static 'images/bb-logo-small.svg' %}" alt="logo" width=62 height=62>
+                    <!-- <h1 class="logo-text">Build Bible</h1> -->
+                </div>
+
+                <ul class="pure-menu-list ">
+                    <li class="pure-menu-item {% block home_selected %}{% endblock home_selected %}">
+                        <a href="/" class="pure-menu-link" aria-label="Home" title="Home">
+                            <ion-icon name="home" class="menu-icon"></ion-icon> Home
+                        </a>
+                    </li>
+                    <li
+                        class="pure-menu-item menu-item-divided {% block general_selected %}{% endblock general_selected %}">
+                        <a href="{% url 'content-general'%}" class="pure-menu-link" aria-label="General Knowlege"
+                            title="General Knowledge">
+                            <ion-icon name="paper"></ion-icon> General Knowledge
+                        </a>
+                    </li>
+                    <li class="pure-menu-item {% block faq_selected %}{% endblock faq_selected %}">
+                        <a href="/faq" class="pure-menu-link" aria-label="FAQ" title="FAQ">
+                            <ion-icon name="help" class="menu-icon"></ion-icon> FAQs
+                        </a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    {% if user.is_staff%}
+                    <li class="pure-menu-item menu-item-divided">
+                        <a href="/admin" class="pure-menu-link" aria-label="Admin Dashboard" title="Admin Dashboard">
+                            <ion-icon name="key"></ion-icon> Admin Dashboard
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="pure-menu-item">
+                        <a href="{% url 'profile' %}" class="pure-menu-link" aria-label="user profile"
+                            title="User Profile">
+                            <ion-icon name="contact"></ion-icon> {{ user.username }}
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="{% url 'logout' %}" class="pure-menu-link" aria-label="Sign Out" title="Sign Out">
+                            <ion-icon name="log-out"></ion-icon> Sign Out
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">
+                <span class="closebtn" onclick="$(this).parent().slideUp(200)">&times;</span>
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% block page_contents %}{% endblock page_contents %}
+            <div class="footer">
+                <div class="legal pure-g">
+                    <div class="pure-u-1 u-sm-1-2">
+                        <a href="/" aria-label="Home" title="Home">Home</a> |
+                        <a href="{% url 'content-general'%}" aria-label="General Knowledge"
+                            title="General Knowledge">General Knowledge</a> |
+                        <a href="/faq" aria-label="FAQ" title="FAQ">FAQ</a>
+                        <p>
+                            ©BuildBible.com 2019. All rights reserved.
+                        </p>
+
+                        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik"
+                                title="Freepik">Freepik</a>
+                            from
+                            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'content/js/ui.js' %}"></script>
+</body>
+
+
+</html>

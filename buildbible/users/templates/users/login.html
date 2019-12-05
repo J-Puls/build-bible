@@ -1,0 +1,24 @@
+{% extends 'content/base.html' %}
+{% block alt_title %} | Login{% endblock alt_title %}
+{% load crispy_forms_tags %}
+{% block page_contents %}
+
+<div class="content h-50 form-pad">
+    
+    <h1 class="content-subhead">Sign In</h1>
+    <form method="POST" class="pure-form">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+            <small class="text-muted">* indicates required field</small>
+            <div class="w-100 flex-center">
+                <button class="pure-button button-primary w-50" type="submit" aria-label="Sign In" title="Sign In">Sign In</button>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <small class="form-text">Need an account? <a href="{% url 'register'%}" aria-label="Sign Up" title="Sign Up">Sign Up Now</a></small>
+        <p><a href="{% url 'password_reset'%}" aria-label="Forgot Password" title="Forgot Password">Forgot password?</a></p>
+    </div>
+</div>
+{% endblock page_contents %}

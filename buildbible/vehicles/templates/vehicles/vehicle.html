@@ -1,0 +1,54 @@
+{% extends 'content/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/nav_links.css' %}" defer>
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/vehicle_page.css' %}" defer>
+    <link rel="stylesheet" href="{% static 'content/stylesheets/custom_css/posts.css' %}" defer>
+{% endblock extra_css %}
+
+{% block alt_title %} | {{vehicle.vehicle.manufacturer}} {{vehicle.vehicle.model_name}}{% endblock alt_title %}
+{% load static %}
+{% block page_contents %}
+
+<div class="header">
+    <div class="vehicle-header">
+        <div class="image vehicle-image">
+            <img src="{{ vehicle.image.url }}" alt="vehicle image" class="pure-img">
+        </div>
+        <div class="vehicle-header-title">
+            <h1>{{ vehicle.vehicle.manufacturer }} {{ vehicle.vehicle.model_name }}</h1>
+            <h3 class="text-primary">Production: <span>{{ vehicle.vehicle.production_start }} -
+                    {{ vehicle.vehicle.production_end }}</span></h3>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <ul id="category-tabs" class="nav justify-content-center nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-category=1 aria-label="Specs" title="Specs">Specs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-category=2 aria-label="Mechanical" title="MEchanical">Mechanical</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-category=3 aria-label="Interior" title="Interior">Interior</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-category=4 aria-label="Exterior" title="Exterior">Exterior</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-category=5 aria-label="Miscellaneous" title="Miscellaneous">Miscellaneous</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-category=0 aria-label="FSMs" title="FSMs">FSMs</a>
+        </li>
+    </ul>
+    <br>
+    <div class="posts h-50">
+    </div>
+</div>
+<script src={% static 'content/js/update_results.js' %}></script>
+<div id="page-data" data-vehicle_id="{{ vehicle.vehicle.id }}" data-update_url="{% url 'update_content'%}"
+                    data-illurl="{% static 'content/illustrations/undraw_Taken_if77.svg'%}"></div>
+{% endblock page_contents %}

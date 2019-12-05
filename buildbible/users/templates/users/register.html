@@ -1,0 +1,26 @@
+{% extends 'content/base.html' %}
+{% load crispy_forms_tags %}
+{% block page_contents %}
+
+<div class="content h-50 form-pad">
+    <h1 class="content-subhead">User Registration</h1>
+    <form method="POST" class="pure-form">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+            <small class="text-muted">* indicates required field</small>
+            <div class="w-100 flex-center">
+                <button class="pure-button button-primary w-50" type="submit" aria-label="Sign Up" title="Sign Up">
+                    Sign Up
+                </button>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <small class="form-text">
+            Already have an account? 
+                <a href="{% url 'login' %}" aria-label="Sign In" title="Sign In">Sign In</a>
+        </small>
+    </div>
+</div>
+{% endblock page_contents %}
