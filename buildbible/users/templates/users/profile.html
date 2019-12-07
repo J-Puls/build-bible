@@ -25,7 +25,7 @@
                 {% csrf_token %}
                 <fieldset class="form-group">
                     {{ u_form|crispy }}
-                    {{ p_form|crispy }}
+                    {% comment %} {{ p_form|crispy }} {% endcomment %}
                     <div class="w-100 flex-center">
                         <button class="pure-button button-primary w-50" type="submit" aria-label="Submit Changes"
                             title="Submit Changes">

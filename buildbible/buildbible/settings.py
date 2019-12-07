@@ -24,7 +24,6 @@ SECRET_KEY = 'k&c&&q06j5(1^479g_-mws2g_^$w@+xsss2oy+e1#$utxe*8j!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -61,7 +60,7 @@ ROOT_URLCONF = 'buildbible.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'buildbible/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

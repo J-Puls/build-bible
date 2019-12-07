@@ -94,22 +94,27 @@ class Vehicle(models.Model):
     production_start = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
     production_end = models.IntegerField(choices=YEAR_CHOICES, default=current_year)
     def __str__(self):
-        return f'{self.manufacturer} {self.model_name} ({self.production_start}-{self.production_end})'
+        return f'{self.chassis_code} {self.manufacturer} {self.model_name} ({self.production_start}-{self.production_end})'
         
 
 class VehicleProfile(models.Model):
-    vehicle = models.OneToOneField(Vehicle, on_delete=models.CASCADE)
+    context = models.OneToOneField(Vehicle, on_delete=models.CASCADE)
     image = models.ImageField(default='default_vehicle.png', upload_to='vehicle_pics')
 
     def __str__(self):
-        return f'{self.vehicle.manufacturer} {self.vehicle.model_name} {self.vehicle.chassis_code} Profile'
+        return f'{self.context.manufacturer} {self.context.model_name} {self.context.chassis_code} Profile'
 
     def save(self, *args, **kwargs):
         super(VehicleProfile, self).save(*args, **kwargs)
         
         img = Image.open(self.image.path)
 
-        if img.height > 1000 or img.width > 1000:
-            output_size = (1000, 1000)
+        if img.height > 500 or img.width > 500:
+            output_size = (500, 500)
             img.thumbnail(output_size)
             img.save(self.image.path)
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="/media/%s" width="150" height="150" />' % (self.image))
+
+    image_tag.short_description = 'Image Preview'

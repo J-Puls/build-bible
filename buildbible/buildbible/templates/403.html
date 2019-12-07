@@ -1,0 +1,10 @@
+{% extends "content/base.html" %}
+{% block alt_title %} | 403 Error{% endblock alt_title %}
+
+{% block page_contents %}
+<div class="content">
+    <h1 class="text-primary text-center">404: Forbidden</h1>
+    <h2 class="text-center">You're not allowed to do that.</h2>
+    <button class="m-center pure-button button-primary" onclick="window.history.back()">Back</button>
+</div>
+{% endblock page_contents %}

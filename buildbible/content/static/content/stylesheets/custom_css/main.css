@@ -1,8 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300|Ubuntu:300&display=swap");
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+  outline: none !important;
+}
+
+html.active {
+  overflow: hidden;
+}
+
 body {
   background-color: #121212;
   color: #fafafa;
   font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  font-display: swap;
 }
 
 body a {
@@ -12,6 +24,19 @@ body a {
 
 body a:hover {
   color: rgba(96, 88, 99, 0.6);
+}
+
+body.active {
+  overflow: hidden;
+}
+
+body.active #layout {
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
+.form-control {
+  font-size: 16px;
 }
 
 .pure-img-responsive {
@@ -28,6 +53,7 @@ body a:hover {
           box-shadow: #231d30 2px 3px 4px;
   outline: none;
   font-weight: 700;
+  font-size: 16px;
 }
 
 .button-link {
@@ -169,9 +195,14 @@ body a:hover {
   padding-left: 0;
 }
 
+#layout.active {
+  overflow: hidden;
+}
+
 #layout.active #menu {
   left: 250px;
   width: 250px;
+  overflow: hidden;
 }
 
 #layout.active .menu-link {
@@ -228,8 +259,12 @@ body a:hover {
   font-family: 'Lato', sans-serif;
 }
 
+.header h1.title-smaller {
+  font-size: 2em;
+}
+
 .header .post-subtitle {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 200;
   padding: 0;
   margin-top: 0;
@@ -238,6 +273,9 @@ body a:hover {
 @media (min-width: 51em) {
   .header h1 {
     font-size: 3em;
+  }
+  .header .post-subtitle {
+    font-size: 1.2em;
   }
 }
 
@@ -400,6 +438,9 @@ body a:hover {
     position: relative;
     left: 250px;
   }
+  #layout.active #main.active {
+    position: fixed;
+  }
 }
 
 @-webkit-keyframes rotating {
@@ -433,14 +474,14 @@ body a:hover {
 
 @-webkit-keyframes flashing {
   100% {
+    opacity: 1;
   }
-  opacity: 1;
   50% {
+    opacity: .3;
   }
-  opacity: .3;
   100% {
+    opacity: 1;
   }
-  opacity: 1;
 }
 
 @keyframes flashing {
@@ -458,5 +499,66 @@ body a:hover {
 .flashing {
   -webkit-animation: flashing 2s linear infinite;
           animation: flashing 2s linear infinite;
+}
+
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #000000a9;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+}
+
+.modal-backdrop .share-modal {
+  height: 100%;
+  background-color: #000000de;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1002;
+  text-align: center;
+  padding: 30px;
+}
+
+@media (min-width: 51em) {
+  .modal-backdrop .share-modal {
+    top: 30%;
+    height: 250px;
+    width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.modal-backdrop .share-modal h1 {
+  height: 2em;
+  display: block;
+}
+
+.modal-backdrop .share-modal .modal-close {
+  float: right;
+  color: #bd2014;
+  cursor: pointer;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+}
+
+.modal-backdrop .share-modal .modal-close:hover {
+  opacity: .7;
+}
+
+.modal-backdrop .share-modal .url-box {
+  display: block;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  width: 75%;
+  height: 50px;
+  margin: 20px auto;
+  font-size: 20px;
+  color: black;
 }
 /*# sourceMappingURL=main.css.map */

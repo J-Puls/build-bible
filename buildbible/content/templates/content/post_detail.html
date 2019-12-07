@@ -1,8 +1,13 @@
 {% extends "content/base.html" %}
 {% block alt_title %} | {{object.title}}{% endblock alt_title %}
+{% block alt_JS %}{% endblock alt_JS %}
 {% block page_contents %}
 <div class="header">
-    <h1>{{ object.title }}</h1>
+    {% if object.title|length > 25 %}
+        <h1 class="title-smaller">{{ object.title }}</h1>
+    {% else %}
+        <h1 class="title-smaller">{{ object.title }}</h1>
+    {% endif %}
     {% if object.subtitle != None %}
     <h2 class="post-subtitle text-primary">{{ object.subtitle }}</h2>
     {% endif %}
@@ -30,11 +35,61 @@
 </div>
 <div class="content">
     {{ object.content|safe }}
+    <br>
+    <center>
+        <button class="pure-button button-primary share-button">
+            Share This Content
+        </button>
+    </center>
 </div>
+
+<div id="post_data" data-title="{{ object.title }}" data-description="{{ object.description }}"></div>
 <script>
     $(document).ready(function () {
         $('table').addClass('pure-table').addClass('pure-table-bordered');
         $('h1', '.content').addClass('content-subhead');
+
+        var shareBtn = $('.share-button'),
+            shareDescription = $('#post_data').data('description');
+
+        $(shareBtn).on('click', function(){
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title + '\n',
+                    text: shareDescription + '\n',
+                    url: window.location.href,
+                })
+                    .then(() => console.log('Share successful'))
+                    .catch((error) => console.log('Error sharing', error));
+                } 
+                else{
+                   var shareModalBackdrop = $('.modal-backdrop');
+                   $(shareModalBackdrop).fadeIn();
+                }
+        var modalClose = $('.modal-close'),
+            copyButton = $('.copy-button'),
+            urlBox = $('.url-box'),
+            ogURL = urlBox.val();
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).val()).select();
+            console.log($temp.val($(element).val()).select())
+            document.execCommand("copy");
+            $temp.remove();
+}
+        $(modalClose).on('click', function(){
+            shareModalBackdrop.fadeOut(function(){
+                urlBox.val(ogURL);
+            });
+            
+        })
+        $(copyButton).on('click', function(){
+            copyToClipboard('.url-box');
+            urlBox.val('Copied!')
+        })
     })
+    
+})
 </script>
 {% endblock page_contents %}

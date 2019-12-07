@@ -24,6 +24,7 @@
 
 .vehicle-header .vehicle-header-title h3 {
   font-size: 1em;
+  margin: 0;
 }
 
 .vehicle-header .vehicle-image {

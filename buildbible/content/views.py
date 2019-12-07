@@ -4,6 +4,7 @@ from .forms import FindVehicleForm, SearchForm
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
 from django.db.models import Q
+from django.utils import timezone
 
 def home(request):
     context = {
@@ -24,7 +25,12 @@ def home(request):
 
 class PostDetailView(DetailView):
     model = Post
-    
+  
+    def get_object(self):
+        obj = super().get_object()
+        obj.times_viewed += 1
+        obj.save()
+        return obj
          
 class SearchListView(ListView):
     model = Post
@@ -44,3 +50,9 @@ def general_knowledge(request):
 
 def faq(request):
     return render(request, 'content/faq.html')
+
+def privacy_policy(request):
+    return render(request, 'content/privacy_policy.html')
+
+def cookie_policy(request):
+    return render(request, 'content/cookie_policy.html')

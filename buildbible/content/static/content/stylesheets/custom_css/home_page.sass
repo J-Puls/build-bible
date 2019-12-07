@@ -46,10 +46,12 @@
         align-content: space-between
         .pure-form
             width: 100%
+            label
+                display: none
             select
                 height: 3em
                 font-weight: 700
-                font-size: 1.2em
+                font-size: 16px
                 cursor: pointer
                 &:focus
                     border-color: rgba(80,67,111,1.0)
@@ -76,16 +78,22 @@
                 width: 75%
                 margin: 0
                 input
-                    height: 3em
                     border-top-right-radius: 0
                     border-bottom-right-radius: 0
-
+                    box-sizing: content-box
             button
                 width: 25%
                 border-top-left-radius: 0
                 border-bottom-left-radius: 0
                 margin: 0
                 height: 3em
+                box-sizing: content-box
+                font-size: 14px
+    .gk-box
+        a
+            width: 80%
+            height: 3em
+            margin: 10px auto
 
 @media (min-width: 51em)
     .find-box
@@ -101,3 +109,7 @@
             .pure-form
                 width: 30%
                 margin: 0 auto
+        .gk-box
+            width: 30%
+            margin: 0 auto
+            

@@ -48,13 +48,13 @@
                 </button>
         </form>
     </div>
-    <h3>Looking for something that's not vehicle specific?
-        <br>
-        <br>
+    <div class="gk-box">
+        <h3 class="text-primary">Looking for something that's not vehicle specific?</h3>
         <a class="pure-button button-link" href="{% url 'content-general'%}" aria-label="General Knowlege" title="General Knowlege">
-        <ion-icon name="paper"></ion-icon> General Knowlege
+        <ion-icon name="paper"></ion-icon> General Knowledge
         </a>
-    </h3>
+    </div>
+        
 </div>
 <div class="content">
     <h2 class="content-subhead text-primary">Check out what's been added recently!</h2>
@@ -98,13 +98,8 @@
     </div>
 </div>
 
-<script src="{% static 'content/js/dropdown_update.min.js' %}" defer></script>
+<script src="{% static 'content/js/dropdown_update.min.js' %}"></script>
 <script>
-    {% comment %} $(document).ready(function () {
-        if (navigator.appName == 'Netscape' || navigator.appName == 'Safari') {
-            $('.logo').css('height', '100%');
-        }
-        $('#div_id_query').append()
-    }) {% endcomment %}
+    updateChoices();
 </script>
 {% endblock page_contents %}

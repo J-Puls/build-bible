@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from . import views as main_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,12 @@ urlpatterns = [
     path('', include('vehicles.urls')),
     path('utils/', include('utils.urls')),
     path('summernote/', include('django_summernote.urls')),
-]
+] 
+
+# handler404 = 'buildbible.views.custom_page_not_found_view'
+# handler500 = 'buildbible.views.custom_error_view'
+# handler403 = 'buildbible.views.custom_permission_denied_view'
+# handler400 = 'buildbible.views.custom_bad_request_view'
 
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:

@@ -1,0 +1,10 @@
+{% extends "content/base.html" %}
+{% block alt_title %} | 500 Error{% endblock alt_title %}
+
+{% block page_contents %}
+<div class="content">
+    <h1 class="text-primary text-center">500: Internal Server Error</h1>
+    <h2 class="text-center">Looks like something broke on our end.<br>Refresh the page or try again later.</h2>
+    <button class="m-center pure-button button-primary" onclick="window.history.back()">Back</button>
+</div>
+{% endblock page_contents %}
