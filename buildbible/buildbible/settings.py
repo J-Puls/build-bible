@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k&c&&q06j5(1^479g_-mws2g_^$w@+xsss2oy+e1#$utxe*8j!'
+# SECRET_KEY = ***Secret Key Goes Here!***
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -147,5 +147,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'buildbiblesystem@gmail.com'
-EMAIL_HOST_PASSWORD = 'besf dnsb ucgh iduh'
+# EMAIL_HOST_USER = ***Email Username Goes Here***
+# EMAIL_HOST_PASSWORD = ***Email Password Goes Here***
