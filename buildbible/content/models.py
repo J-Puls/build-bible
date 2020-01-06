@@ -20,7 +20,9 @@ class Post(models.Model):
     category = models.IntegerField(choices=CATEGORY_CHOICES, blank=True, null=True,)
     tags = models.CharField(max_length=100, default=None, blank=True, null=True,)
     times_viewed = models.IntegerField(default=0)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name="posts")
+    last_modified_by = models.ForeignKey(User, null=True, related_name='entry_modifiers', blank=True, on_delete=models.SET_NULL)
+    last_modified = models.DateTimeField(auto_now_add=True)
     context = models.ForeignKey(Vehicle, default=None, blank=True, null=True, on_delete=models.CASCADE)
     
     class Meta:

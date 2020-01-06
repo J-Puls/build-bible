@@ -1,0 +1,30 @@
+.nav {
+  border-color: #3f3f3f;
+}
+
+.nav .nav-link {
+  cursor: pointer;
+  border-bottom: 1px solid #3f3f3f;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+@media (min-width: 51em) {
+  .nav .nav-link {
+    font-size: 18px;
+  }
+}
+
+.nav .nav-link:hover {
+  border-color: #3f3f3f;
+  background-color: #3f3f3f;
+}
+
+.nav .nav-link.active {
+  background: #3f3f3f;
+}
+
+.nav a:hover {
+  color: white !important;
+}
+/*# sourceMappingURL=nav_links.css.map */

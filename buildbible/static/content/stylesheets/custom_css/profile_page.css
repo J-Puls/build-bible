@@ -1,0 +1,31 @@
+.profile-card {
+  padding-bottom: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: rows;
+          flex-direction: rows;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile-card .image {
+  width: 100%;
+}
+
+.profile-card .image .profile-img {
+  padding: 10px;
+  border-radius: 50%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.profile-card #id_image {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=profile_page.css.map */

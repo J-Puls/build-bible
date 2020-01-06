@@ -235,6 +235,9 @@ body.active #layout {
 .content table tr:nth-child(even) {
   background-color: #fafafa11;
 }
+.pure-table tr td{
+  min-width: 200px;
+}
 
 .content img {
   max-width: 100%;

@@ -1,4 +1,5 @@
 {% extends "content/base.html" %}
+{% block meta %}<meta name="Description" content="{{ object.description }}">{% endblock meta%}
 {% block alt_title %} | {{object.title}}{% endblock alt_title %}
 {% block alt_JS %}{% endblock alt_JS %}
 {% block page_contents %}
@@ -42,14 +43,25 @@
         </button>
     </center>
 </div>
-
+<div class="modal-backdrop" style="display: none;">
+    <div class="share-modal">
+        <a class="modal-close"><ion-icon name="close-circle-outline" size="large"></ion-icon></a>
+        <h1 class="text-primary">Share This Page</h1>
+        <input class="url-box" type="text" readonly value="{{ request.build_absolute_uri }}">
+        <button class="pure-button button-primary copy-button">Copy to Clipboard</button>
+    </div>
+</div>
 <div id="post_data" data-title="{{ object.title }}" data-description="{{ object.description }}"></div>
 <script>
     $(document).ready(function () {
         $('table').addClass('pure-table').addClass('pure-table-bordered');
+        $('table').removeAttr("style");
         $('h1', '.content').addClass('content-subhead');
+	$('table').wrap("<div class='table-wrapper'></div>");
+	$('.table-wrapper').before("<small class='table-scroll flashing'>Scroll for more >>><small>")
+	    $('.table-wrapper').scrollLeft(1000)
 
-        var shareBtn = $('.share-button'),
+	 var shareBtn = $('.share-button'),
             shareDescription = $('#post_data').data('description');
 
         $(shareBtn).on('click', function(){

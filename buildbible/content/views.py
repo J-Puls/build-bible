@@ -47,6 +47,8 @@ class SearchListView(ListView):
 def general_knowledge(request):
     return render(request, 'content/general_knowledge.html')
 
+def community(request):
+    return render(request, 'content/community_home.html')
 
 def faq(request):
     return render(request, 'content/faq.html')

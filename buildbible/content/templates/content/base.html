@@ -48,6 +48,13 @@
                             <ion-icon name="paper"></ion-icon> General Knowledge
                         </a>
                     </li>
+                    <li
+                        class="pure-menu-item menu-item-divided {% block community_selected %}{% endblock community_selected %}">
+                        <a href="{% url 'content-community'%}" class="pure-menu-link" aria-label="General Knowlege"
+                            title="General Knowledge">
+                            <ion-icon name="people"></ion-icon> Community
+                        </a>
+                    </li>
                     <li class="pure-menu-item {% block faq_selected %}{% endblock faq_selected %}">
                         <a href="/faq" class="pure-menu-link" aria-label="FAQ" title="FAQ">
                             <ion-icon name="help" class="menu-icon"></ion-icon> FAQs
@@ -104,7 +111,9 @@
 
 
                         <p>
-                            ©BuildBible.com 2019. All rights reserved.
+                            Contact Webmaster: <a href="mailto:abc@abc.com"><ion-icon name="mail"></ion-icon> buildbiblesystem@gmail.com</a>
+                            <br>
+                            ©2019 - Present Build-Bible.com. All rights reserved.
                         </p>
 
                         <div>Icons made by <a href="https://www.flaticon.com/authors/freepik"
@@ -116,14 +125,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="modal-backdrop" style="display: none;">
-        <div class="share-modal">
-         <a class="modal-close"><ion-icon name="close-circle-outline" size="large"></ion-icon></a>
-            <h1 class="text-primary">Share This Page</h1>
-            <input class="url-box" type="text" readonly value="{{ request.build_absolute_uri }}">
-            <button class="pure-button button-primary copy-button">Copy to Clipboard</button>
         </div>
     </div>
 </body>

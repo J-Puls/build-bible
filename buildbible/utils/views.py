@@ -43,7 +43,7 @@ def update_content(request):
         return JsonResponse(list(posts), safe=False)
     elif int(category) == 0:
         if vehicle != []:
-            manuals = ServiceManual.objects.filter(vehicle=vehicle).all().values('id', 'display_filename', 'date_uploaded', 'fsm_file')
+            manuals = ServiceManual.objects.filter(vehicle=vehicle).order_by('display_filename').all().values('id', 'display_filename', 'date_uploaded', 'fsm_file')
             return JsonResponse(list(manuals), safe=False)
         else:
             return 'Not a valid request for general knowledge content.'

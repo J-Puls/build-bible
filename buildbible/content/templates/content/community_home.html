@@ -1,0 +1,16 @@
+{% extends "content/base.html" %}
+{% load static %}
+{% block alt_title %} | Community{% endblock alt_title %}
+{% block community_selected %}pure-menu-selected{% endblock community_selected %}
+{% block page_contents %}
+
+<div class="header">
+    <h1>Build Bible Community</h1>
+    <h2 class="text-primary post-subtitle">Welcome Home.</h2>
+</div>
+<div class="content">
+    <img src="{% static 'content/illustrations/undraw_programming_2svr.svg'%}" alt="">
+    <h1 class="text-center">Under Development</h1>
+</div>
+
+{% endblock page_contents %}

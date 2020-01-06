@@ -6,4 +6,4 @@ from .models import Vehicle, VehicleProfile
 @receiver(post_save, sender=Vehicle)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        VehicleProfile.objects.create(vehicle=instance)
+        VehicleProfile.objects.create(context=instance)

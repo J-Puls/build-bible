@@ -2,14 +2,34 @@ from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDrop
 from django.contrib import admin
 from .models import Post, ServiceManual
 from django_summernote.admin import SummernoteModelAdmin
+from .forms import PostForm
 
 class PostAdmin(SummernoteModelAdmin):
+    form = PostForm
     summernote_fields = ('content',)
     list_display = ('title', 'context', 'author', 'times_viewed', 'date_posted')
     list_filter = (('context', RelatedDropdownFilter), 'date_posted',)
     search_fields = ('title', 'description',)  
     empty_value_display = 'Not Specified'
-    readonly_fields = ('author', 'times_viewed',)
+    readonly_fields = ('author', 'times_viewed','last_modified', 'last_modified_by',)
+    fieldsets = ((
+        None, {
+            'fields': ('title', 'subtitle', 'content', 'description',)
+        }), (
+        'Other Information', {
+            'fields': ('category', 'tags', 'context','author','last_modified', 'last_modified_by', 'times_viewed',)
+        })
+    )
+    
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:
+            obj.author = request.user
+        obj.last_modified_by = request.user
+        obj.save()
+
+
+
+
 class FsmAdmin(admin.ModelAdmin):
     list_display = ('display_filename','_model_name','_chassis_code', '_manufacturer', 'uploader', 'date_uploaded')
     list_filter = (('vehicle', RelatedDropdownFilter), ('uploader', RelatedDropdownFilter), 'date_uploaded',)
