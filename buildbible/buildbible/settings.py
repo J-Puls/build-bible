@@ -29,7 +29,7 @@ SECRET_KEY =  config["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['build-bible.com','www.build-bible.com','45.79.26.74', 'localhost']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
